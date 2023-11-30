@@ -1,0 +1,19 @@
+.p1{
+    background-color: rgb(232, 89, 11);
+}
+.size{
+    font-size: 24px;
+}
+/* p:nth-child(odd){
+    color: blue;
+} */
+#div1{
+    font-size: 34px;
+    color: blue;
+}
+#div2{
+    background-color: lightgreen;
+    font-weight: bold;
+    font-size: 24px;
+
+}
