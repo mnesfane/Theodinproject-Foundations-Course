@@ -1,0 +1,78 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #4CAF50;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+section {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+ul, ol {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li, ol li {
+    margin-bottom: 10px;
+}
+
+#intro .cta-button, #contact .contact-button {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+#how-it-works ol {
+    counter-reset: step;
+}
+
+#how-it-works li {
+    position: relative;
+    margin-left: 30px;
+}
+
+#how-it-works li:before {
+    content: counter(step);
+    counter-increment: step;
+    position: absolute;
+    left: -2em;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 0.5em;
+    border-radius: 50%;
+}
+
+#testimonials blockquote {
+    background-color: #f9f9f9;
+    border-left: 4px solid #4CAF50;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

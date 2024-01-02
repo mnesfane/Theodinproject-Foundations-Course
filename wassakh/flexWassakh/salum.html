@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHEREVER YOU GO</title>
+</head>
+<body>
+
+    <h1>WHEREVER YOU GO</h1>
+
+    <!-- Intégration du logo -->
+    <img src="wi.jpeg" alt="Logo de mon site" width="200" height="100">
+
+</body>
+</html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wherever You Go - Surprise Destination Travel</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #1a1a1a; /* Couleur de fond plus sombre */
+            color: #e0e0e0; /* Couleur de texte plus claire */
+        }
+/* styles.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #000; /* Fond noir */
+    color: #e0e0e0; /* Couleur de texte plus claire */
+}
+
+/* ... (autres styles restent inchangés) ... */
+
+#destinations {
+    background-color: #ffd700; /* Fond doré */
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+#destinations h2,
+#destinations p {
+    color: #000; /* Texte noir */
+}
+
+        header {
+            background-color: #3a3a3a; /* Couleur d'en-tête plus foncée */
+            color: #e0e0e0;
+            text-align: center;
+            padding: 20px;
+        }
+
+        section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            background-color: #2a2a2a; /* Couleur de fond légèrement plus claire */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        ul,
+        ol {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li,
+        ol li {
+            margin-bottom: 10px;
+        }
+
+        #intro .cta-button,
+        #contact .cta-button {
+            display: inline-block;
+            background-color: #4a90e2; /* Couleur de bouton aventureuse */
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        #how-it-works ol {
+            counter-reset: step;
+        }
+
+        #how-it-works li {
+            position: relative;
+            margin-left: 30px;
+        }
+
+        #how-it-works li:before {
+            content: counter(step);
+            counter-increment: step;
+            position: absolute;
+            left: -2em;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #4a90e2; /* Couleur de numéro de liste */
+            color: #fff;
+            padding: 0.5em;
+            border-radius: 50%;
+        }
+
+        #testimonials blockquote {
+            background-color: #333;
+            border-left: 4px solid #4a90e2; /* Couleur de citation */
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        #contact-form {
+            background-color: #4a90e2; /* Couleur de formulaire */
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        #contact-form label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        #contact-form input,
+        #contact-form textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px; /* Ajusté la taille du pied de page */
+            background-color: #3a3a3a; /* Couleur de pied de page */
+            color: #e0e0e0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        #destinations {
+            background-color: #4a90e2; /* Couleur de section de destinations */
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #destinations h2,
+        #destinations p {
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Wherever You Go</h1>
+        <p >Découvre Ta Destination Surprise</p>
+    </header>
+
+    <section id="intro">
+        <h2>Embarque dans une Aventure Surprise !</h2>
+        <p>Chez Wherever You Go, nous croyons à la magie de la surprise. Laisse-nous planifier pour toi et prépare-toi à une aventure vers une destination inconnue. Déballe l'excitation, crée des souvenirs et embrasse l'inattendu.</p>
+        <a href="#contact" class="cta-button">Réserve Ta Surprise</a>
+    </section>
+
+    <section id="how-it-works">
+        <h2>Comment Ça Marche</h2>
+        <ol>
+            <li>Choisis tes dates de voyage et ton budget.</li>
+            <br>
+            <li>Nos experts en voyage planifieront un itinéraire unique.</li>
+            <br>
+            <li>Découvre ta destination surprise juste avant le départ.</li>
+            <br>
+            <li>Embarque dans une aventure inoubliable !</li>
+        </ol>
+    </section>
+
+    <section id="why-choose-us">
+        <h2>Pourquoi Choisir Wherever You Go ?</h2>
+        <ul>
+            <li><strong>Excitation Garantie :</strong> Ressens le frisson de découvrir une nouvelle destination.</li>
+            <li><strong>Planification Personnalisée :</strong> Nos experts adaptent le voyage à tes préférences et à ton budget.</li>
+            <li><strong>Surprises Exclusives :</strong> Profite d'activités et d'hébergements choisis avec soin.</li>
+            <li><strong>Support 24/7 :</strong> Notre équipe dévouée est prête à t'assister à chaque étape.</li>
+        </ul>
+    </section>
+
+    <section id="destinations">
+        <h2>Destinations Surprises</h2>
+        <p>Explorez des endroits uniques et laissez-vous émerveiller par les merveilles du monde. Des plages tropicales aux villes historiques en passant par les paysages enchanteurs, nos destinations surprises vous réservent des découvertes extraordinaires que vous n'oublierez jamais.</p>
+        <p><strong>Mystérieuses</strong></p>
+        <p>Chaque destination est soigneusement sélectionnée pour son originalité et sa beauté.</p>
+        <p><strong>Inattendues</strong>️</p>
+        <p>Il est temps de sortir de votre zone de confort et de vous laisser surprendre par de nouvelles cultures et expériences.</p>
+        <p><strong>Uniques</strong></p>
+        <p>Chaque voyage est personnalisé pour répondre à vos préférences et à vos envies.</p>
+        <p><strong>Passionnantes</strong></p>
+        <p>Préparez-vous à vivre des aventures inoubliables et à créer des souvenirs qui dureront toute une vie.</p>
+    </section>
+
+    <section id="testimonials">
+        <h2>Ce Que Disent Nos Voyageurs</h2>
+        <blockquote>
+            <p>"Wherever You Go a rendu notre anniversaire inoubliable ! La destination surprise était parfaite, et chaque détail était pris en charge." - Voyageur Heureux</p>
+        </blockquote>
+        <blockquote>
+            <p>"J'ai voyagé avec plusieurs agences, mais l'élément surprise a ajouté un nouveau niveau d'excitation. Hautement recommandé !" - Un Autre Client Satisfait</p>
+        </blockquote>
+    </section>
+
+    <section id="contact">
+        <h2>Prêt pour Ton Aventure Surprise ?</h2>
+        <p>Contacte-nous dès aujourd'hui pour réserver ton voyage à destination surprise. Libère le frisson de l'inconnu !</p>
+        <div id="contact-form">
+            <form action="mailto:khalilsalmaaa@gmail.com" method="post" enctype="text/plain">
+                <label for="phone">Numéro de Téléphone :</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="country">Pays :</label>
+                <input type="text" id="country" name="country" required>
+
+                <label for="email">Email :</label>
+                <input type="email" id="email" name="email" required>
+
+                <input type="submit" value="Contactez-Nous" class="cta-button">
+            </form>
+        </div>
+        <br>
+        <br>
+        <br>
+    </section>
+
+    <footer>
+        <p style="font-size: 12px; margin-top: 10px;">© 2023 Wherever You Go. Tous droits réservés.</p>
+    </footer>
+
+</body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wherever You Go - Surprise Destination Travel</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-image: url('arrière.JPG'); /* Remplacez 'arriere.JPG' par le chemin réel de votre image de fond */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #e0e0e0; /* Couleur de texte plus claire */
+        }
+        <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wherever You Go - Surprise Destination Travel</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-image: url('arriere.JPG'); /* Remplacez 'arriere.JPG' par le chemin réel de votre image de fond */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #e0e0e0; /* Couleur de texte plus claire */
+        }
+
+        header {
+            background-color: #8B0000; /* Couleur grenat pour l'en-tête */
+            color: #FFFFFF; /* Texte blanc */
+            text-align: center;
+            padding: 20px;
+        }
+
+        #intro .cta-button,
+        #contact .cta-button {
+            background-color: #800000; /* Couleur de bouton grenat */
+            color: #fff;
+        }
+
+        #intro .cta-button:hover,
+        #contact .cta-button:hover {
+            background-color: #600000; /* Couleur de survol du bouton grenat plus foncé */
+        }
+
+        #how-it-works li:before {
+            background-color: #800000; /* Couleur de numéro de liste grenat */
+            color: #fff;
+        }
+
+        #destinations {
+            background-color: #800000; /* Couleur de section de destinations grenat */
+            color: #fff;
+        }
+
+        #testimonials blockquote {
+            background-color: #600000; /* Couleur de citation grenat plus foncé */
+            border-left: 4px solid #800000; /* Bordure de citation grenat */
+        }
+
+        #contact-form {
+            background-color: #800000; /* Couleur de formulaire grenat */
+        }
+
+        footer {
+            background-color: #8B0000; /* Couleur de pied de page grenat */
+            color: #e0e0e0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ... (votre contenu HTML reste inchangé) ... -->
+
+</body>
+
+</html>
+
+
+</html>
