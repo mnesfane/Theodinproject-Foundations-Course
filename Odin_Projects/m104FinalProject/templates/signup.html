@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styles1.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>ista ca</title>
+  </head>
+
+  <body style="background-image: url('https://media.gettyimages.com/id/184601291/fr/photo/xxxl-b%C3%A9ton-fonc%C3%A9.jpg?s=2048x2048&w=gi&k=20&c=eQrTa_X5_o_Z5rvhzQmVuTTqk-NP6Zb7MFoFv7phDyA='); background-size: cover; background-repeat: no-repeat; background-position: center; background-color: black;">
+  <header style="background-color: rgb(0, 149, 255);">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+      <div class="container">
+        <a class="navbar-brand" href="/"><img width="100vw" src="../static/img/ofppt-logo.png" alt="oflogo"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- sidebar -->
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" style="background-color: rgb(0, 149, 255);">
+        <!-- sidebar header -->
+          <div class="offcanvas-header text-white border-bottom">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Ista ca</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body justify-content-center">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active mx-4 text-white" aria-current="page" href="/"><strong>About ISTA CA</strong></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active mx-4  text-white" href="/contact"><strong>Contact</strong></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active mx-4  text-white" href="https://www.fs.ucd.ac.ma/"> <strong>J'aime pas!</strong></a>
+              </li>
+            </ul>
+            {% if session["user_id"] %}
+            <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
+              <a class="text-dark text-decoration-none bg-light px-3 py-1 rounded-4" href="/logout"><b>Logout</b></a>
+            </div>
+            {% else %}
+            <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-3">
+              <a class="text-dark text-decoration-none bg-light px-3 py-1 rounded-4" href="/login"><b>Login</b></a>
+              <a class="text-white text-decoration-none bg-primary px-3 py-1 rounded-4" href="/signup"><b>Signup</b></a>
+            </div>
+              {% endif %}
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <h1 class="text-center text-white my-5"><b>Register</b></h1>
+    <section>
+      <form action="/signup" method="POST">
+        <table width="40%">
+          <tr>
+            <td class="px-3" >
+              <br>
+              <label class="text-white" for="inp1"><b>Username:</b></label>
+              <input id="inp1" type="text" class="form-control" name="username" required>
+              <br>
+            </td>
+          </tr>
+          <tr>
+            <td class="px-3">
+              <label class="text-white" for="inp2"><b>Password:</b></label>
+              <input id="inp2" type="password" class="form-control" name="password" required>
+              <br>
+            </td>
+          </tr>
+          <tr>
+            <td class="px-3">
+              <label class="text-white" for="inp2"><b>Confirm:</b></label>
+              <input id="inp2" type="password" class="form-control" name="confirmation" required>
+              <br>
+            </td>
+          </tr>
+          <tr>
+            <td class="px-3 pb-4 text-center lastTd">
+              <button type="submit" class="btn btn-dark"><b>Log in</b></button>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </section>
+    <br><br><br>
+  </main>
+  <footer>
+    <div>
+      <br><br>
+      <h1 class="text-center text-white firsth1"><strong>Contact <span class="blue">US</span></strong></h1>
+      <br>
+    </div>
+    <div class="d-flex justify-content-center gap-4">
+      <a href="mailto:contact@ofppt.ma"><i class="fas fa-paper-plane fa-3x"></i></a>
+      <a href="https://www.facebook.com/ofppt.page.officielle/"><i class="fab fa-facebook fa-3x"></i></a>
+      <a href="https://www.instagram.com/ofppt.officiel/"><i class="fab fa-instagram fa-3x"></i></a>
+    </div>
+    <br>
+</footer>
+
+  <!-- Bootstrap JS and Popper.js -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+  </body>
+  </html>
