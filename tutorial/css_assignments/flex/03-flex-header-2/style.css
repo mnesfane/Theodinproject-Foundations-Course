@@ -60,5 +60,5 @@ ul {
 }
 .part1 ul{
   display: flex;
-  margin: 0 16px;
+  /* margin: 0 16px; */
 }
