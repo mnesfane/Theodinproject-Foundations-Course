@@ -48,6 +48,7 @@ body {
   justify-content: center;
   border: 1px solid #eee;
   padding: 0;
+  margin: 0.6rem;
 }
 
 button {
@@ -67,3 +68,35 @@ button.cancel {
   border: 1px solid #ddd;
   color: royalblue;
 }
+/* ---------- */
+.modal{
+  display: flex;
+  gap: 20px;
+}
+.icon{
+  margin: 0.5rem;
+}
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.2em;
+  font-weight: bold;
+
+}
+/* .headercontainer div{
+  margin: 0.6rem 0;
+} */
+
+.last2Buttons{
+  margin: 1rem 0;
+}
+/* .left{ */
+  /* display: flex;
+  gap: 20px; */
+  /* justify-content: flex-end; */
+}
+/* .right{
+  display: flex;
+  justify-content: flex-start;
+} */

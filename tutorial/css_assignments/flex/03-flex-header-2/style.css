@@ -58,13 +58,6 @@ ul {
   display: flex;
   /* padding: 0; */
 }
-/* .part1 ul{
-  display: flex;
-  margin: 0 16px;
-}
-.part1 > *{
-  margin-right: 16px;
-} */
 
 .part1 ul {
   display: flex;
