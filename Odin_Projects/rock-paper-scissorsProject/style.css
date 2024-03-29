@@ -1,0 +1,27 @@
+body{
+    background-color: black;
+}
+
+h1{
+    text-align: center;
+    color: white;
+    margin-bottom: 8rem;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    gap: 200px;
+}
+.container button{
+    background-color: #333333;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(4);
+    border: 1px solid white;
+    border-radius: 100px;
+}
