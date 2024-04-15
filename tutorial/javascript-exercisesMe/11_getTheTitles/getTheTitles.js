@@ -12,6 +12,6 @@ const getTheTitles2 = function(books) {
     })
 }
 
-console.log(getTheTitles2([{  title: 'Book',  author: 'Name'},{  title: 'Book2',  author: 'Name2'}]))
+// console.log(getTheTitles2([{  title: 'Book',  author: 'Name'},{  title: 'Book2',  author: 'Name2'}]))
 // Do not edit below this line
 module.exports = getTheTitles;
