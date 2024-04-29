@@ -76,3 +76,36 @@ function main(player){
 }
 
 
+// function computerPlay() {
+//     const options = ["rock", "paper", "scissors"];
+//     return options[Math.floor(Math.random() * options.length)];
+// }
+
+// function playRound(playerSelection, computerSelection) {
+//     playerSelection = playerSelection.toLowerCase();
+//     if (!["rock", "paper", "scissors"].includes(playerSelection)) {
+//         return "Invalid selection! Please choose rock, paper, or scissors.";
+//     }
+
+//     if (playerSelection === computerSelection) {
+//         return "It's a tie!";
+//     } else if (
+//         (playerSelection === "rock" && computerSelection === "scissors") ||
+//         (playerSelection === "paper" && computerSelection === "rock") ||
+//         (playerSelection === "scissors" && computerSelection === "paper")
+//     ) {
+//         return `You win! ${playerSelection} beats ${computerSelection}.`;
+//     } else {
+//         return `You lose! ${computerSelection} beats ${playerSelection}.`;
+//     }
+// }
+
+// function game() {
+//     for (let i = 0; i < 5; i++) {
+//         const playerSelection = prompt("Enter your choice: rock, paper, or scissors");
+//         const computerSelection = computerPlay();
+//         console.log(playRound(playerSelection, computerSelection));
+//     }
+// }
+
+// game();

@@ -1,27 +1,85 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
 body{
-    background-color: black;
+    background-color: #222831;
+    font-family: 'Roboto', sans-serif;
 }
 
-h1{
-    text-align: center;
-    color: white;
-    margin-bottom: 8rem;
-}
-
-.container{
+/* =======header======= */
+header{
     display: flex;
     justify-content: center;
-    gap: 200px;
+    background-color: black;
+    /* width: 100%; */
+    padding: 40px 0px;
+
+}
+
+.title{
+    font-size: 32px;
+    color: #fac650;
+    font-family: 'Press Start 2P', cursive;
+}
+/* ========main======== */
+#scoreDiv{
+    text-align: center;
+    color: white;
+    margin-top: 2.5rem;
+}
+
+.infoTitle{
+    font-size: 32px;
+}
+
+.infoMessage{
+    margin-top: 0.9rem;
+    font-size: 20px;
+}
+.scoreResult{
+    margin-top: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    max-width: 25rem;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+.playerScore, .computerScore{
+    width: 10rem;
+}
+.sign{
+    font-size: 5rem;
+}
+.score{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+
+
+/* =============== */
+
+.container{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 .container button{
     background-color: #333333;
-    width: 30px;
-    height: 30px;
+    width: 8rem;
+    height: 8rem;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    transform: scale(4);
-    border: 1px solid white;
-    border-radius: 100px;
+    /* transform: scale(4); */
+    border-width: 0px;
+    border-radius: 10px;
 }
