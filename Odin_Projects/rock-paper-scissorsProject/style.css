@@ -19,7 +19,6 @@ header{
     padding: 40px 0px;
 
 }
-
 .title{
     font-size: 32px;
     color: #fac650;
@@ -48,7 +47,7 @@ header{
     margin: 0 auto;
     margin-top: 40px;
 }
-.playerScore, .computerScore{
+.playerScoreDiv, .computerScoreDiv{
     width: 10rem;
 }
 .sign{
