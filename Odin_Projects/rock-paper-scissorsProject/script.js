@@ -21,7 +21,6 @@ function rockByComputer(player){
     }
 }
 
-
 function paperByComputer(player){
     if (player == 'paper')
         alert(`paper ties with paper | Player: ${playerPoints} | Computer: ${comuterPoints}`);
