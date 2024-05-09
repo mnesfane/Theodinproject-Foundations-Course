@@ -9,15 +9,36 @@ let computerPoints = 0
     return choice[randomNumber];
  }
 
+const showPopup = function(stringResult){
+    let popup = document.querySelector(".popup")
+    let overlay = document.querySelector(".overlay")
+    let startGame = document.querySelector(".startGame")
+    popup.classList.add('active') 
+    overlay.classList.add('active')
+    startGame.textContent = stringResult
+}
+
+const closePopup = () =>{
+    let popup = document.querySelector(".popup")
+    let overlay = document.querySelector(".overlay")
+    popup.classList.remove("active")
+    overlay.classList.remove("active")
+}
+
 function result(playerScore, computerScore){
-    let again;
+    let playButton = document.querySelector("#playButton")
     if(playerPoints > computerPoints)
-        again = confirm(`You Won GG| Player: ${playerPoints} | Computer: ${computerPoints}\n Play Again`);
+        showPopup("You Won!")
     else
-        again = confirm(`You Lost , another time| Player: ${playerPoints} | Computer: ${computerPoints}\n Play Again`);
-    if (again){
+        showPopup("You Lost!")
+    playButton.onclick = () =>{
         playerPoints = computerPoints = 0;
-        playerScore.textContent = computerScore.textContent = 0
+        playerScore.textContent = computerScore.textContent = 0;
+        closePopup();
+        let playerWeaponDiv = document.getElementById('playerCHoosenWeaponDiv');
+        let computerWeaponDiv = document.getElementById('computerCHoosenWeaponDiv');
+        playerWeaponDiv.textContent = "?"
+        computerWeaponDiv.textContent = "?"
     }
 }
 
