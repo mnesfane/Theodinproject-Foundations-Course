@@ -37,8 +37,12 @@ function result(playerScore, computerScore){
         closePopup();
         let playerWeaponDiv = document.getElementById('playerCHoosenWeaponDiv');
         let computerWeaponDiv = document.getElementById('computerCHoosenWeaponDiv');
+        let infoTilte = document.querySelector('.infoTitle')
+        let infoMessage =document.querySelector('.infoMessage')
         playerWeaponDiv.textContent = "?"
         computerWeaponDiv.textContent = "?"
+        infoTilte.textContent = "Choose your weapon"
+        infoMessage.textContent = "First to score 5 points wins the game"
     }
 }
 
