@@ -5,14 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap">
+
 </head>
 <body>
-    <h1>play rock paper scissors</h1>
+    <header>
+        <h1 class="title">ROCK PAPER SCISSORS</h1>
+    </header>
+    <main id="scoreDiv">
+        <div id="infoDiv">
+            <h2 class="infoTitle" >Choose your weapon</h2>
+            <h3 class="infoMessage">First to score <span class="round">5</span> points wins the game</h3>
+            <div class="scoreResult">
+                <div class="playerScoreDiv"><div class="sign" id="playerCHoosenWeaponDiv">?</div> <p>player: <span class="playerScore">0</span> </p></div>
+                <div class="computerScoreDiv"><div class="sign" id="computerCHoosenWeaponDiv">?</div> <p>computer: <span class="computerScore">0</span></p></div>
+            </div>
+        </div>
+        </main>
     <div class="container">
-        <button onclick="main('paper')">✋</button>
-        <button onclick="main('rock')">✊</button>
-        <button onclick="main('scissor')">✌️</button>
+        <button onclick="main('paper')"><div class="sign">✋</div></button>
+        <button onclick="main('rock')"><div class="sign">✊</div></button>
+        <button onclick="main('scissor')"><div class="sign">✌️</div></button>
     </div>
+    <div class="popup">
+        <p class="startGame">Start Game</p>
+        <button class="playButton" id="playButton">Play</button>
+    </div>
+    <div class="overlay"></div>
     <script src="script.js"></script>
         
 </body>
