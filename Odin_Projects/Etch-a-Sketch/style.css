@@ -62,9 +62,56 @@
 
 /* ==============------- */
 
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    border-width: 0px;
+}
+
+.body-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.body-container{
+    border: 3px solid brown;
+}
+.etchTitle{
+    text-align: center;
+    font-size: 72px;
+}
+
+.container{
+    width: 480px;
+    height: 480px;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
+}
+.controller{
+    width: 30rem;
+    height: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.colorInput{
+    border-radius: 100px;
+    height: 4rem;
+    width: 4rem;
+    background-color: black;
+    border: none;
+}
+
+.rangeInput{
+    width: 6rem;
+}
 /* .container{
     display: flex;
 } */
+
 
 .grid-row{
     display: flex;
@@ -73,5 +120,5 @@
 .grid-box{
     width: 50px;
     height: 50px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }

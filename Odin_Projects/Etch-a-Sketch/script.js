@@ -1,37 +1,7 @@
-// let squareLenght = 30
-// let squareCount = 16
-// let cube = document.querySelector('.cube')
-// // nbOfdivs = 16
-
-// const divGrid = (nbOfdivs) =>{
-//     // alert(nbOfdivs);
-//     for(let i = 0; i < nbOfdivs - 1; i++){
-//         const row = document.createElement('div')
-//         row.classList.add('row')
-//         for(let j = 0; j < nbOfdivs - 1; j++){
-//             const divsInRow = document.createElement('div')
-//             divsInRow.classList.add('divsInRow')
-//             row.appendChild(divsInRow)
-//         }
-//         cube.appendChild(row)
-//     }
-// }
-
-// let main = function (){
-//     // let cube = document.querySelector('.cube')
-//     // cube.style.height = `${squareCount * squareLenght}px`;
-//     // cube.style.width = `${squareCount * squareLenght}px`;
-//     divGrid(32)
-//     // alert('fdai')
-
-// }
-
-// main()
-
-
-
 const resetButton = document.querySelector('button')
 const container = document.querySelector('.container')
+const clear = document.querySelector('#clear')
+
 const sizeOfGrid = 16;
 
 const createGrid = (amtOfGrids) =>{
@@ -54,4 +24,16 @@ const createGrid = (amtOfGrids) =>{
     }
 }
 
-createGrid(sizeOfGrid)
+clear.addEventListener('click', function() {
+    let griddivs = document.querySelectorAll('.grid-box');
+    griddivs.forEach(function(div) {
+        div.style.backgroundColor = 'white';
+    });
+});
+
+
+const main = function(){
+    createGrid(sizeOfGrid)
+}
+
+main()
