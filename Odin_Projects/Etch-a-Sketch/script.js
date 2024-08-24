@@ -1,11 +1,15 @@
 const resetButton = document.querySelector('button')
 const container = document.querySelector('.container')
 const clear = document.querySelector('#clear')
+const eraser = document.querySelector('#eraser')
+// const color = document.querySelector('#color')
+// const RGBColor = document.querySelector('#rbg-color')
 
-const sizeOfGrid = 16;
+// onclick.color
 
 const createGrid = (amtOfGrids) =>{
     const widthAndHeight = 480 / amtOfGrids
+    // alert('griddivs.length')
     for(let i = 0; i < amtOfGrids; i++){
         const row = document.createElement('div')
         row.classList.add('grid-row')
@@ -15,13 +19,16 @@ const createGrid = (amtOfGrids) =>{
             gridbox.classList.add('grid-box')
             gridbox.style.width = `${widthAndHeight}px`
             gridbox.style.height = `${widthAndHeight}px`
-            gridbox.addEventListener('mouseenter', () =>{
-                gridbox.style.backgroundColor = 'blue'
-            })
+            gridbox.addEventListener('mouseover', mode)
             row.appendChild(gridbox)
         }
         container.appendChild(row)
     }
+}
+const mode = function (e){
+    // if (e.type === 'mouseover' && !mouseDown){
+        e.target.style.backgroundColor = 'blue'
+    // }
 }
 
 clear.addEventListener('click', function() {
@@ -31,9 +38,19 @@ clear.addEventListener('click', function() {
     });
 });
 
+eraser.addEventListener('click', () => {
+    let griddivs = document.querySelectorAll('.grid-box');
+    // alert(griddivs.length)
+    for (let div of griddivs){
+        div.addEventListener('mouseenter' , function (){
+            div.style.backgroundColor = 'white'
+        })
+    }
+})
+
 
 const main = function(){
-    createGrid(sizeOfGrid)
+    createGrid(16)
 }
 
 main()
