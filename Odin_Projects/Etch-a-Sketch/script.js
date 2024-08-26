@@ -7,13 +7,13 @@ let inputColor = document.querySelector('.colorInput')
 const RGBColor = document.querySelector('#rbg-color')
 let range = document.querySelector('#range')
 
-const defaultColor = inputColor.value
-const defaultMode = 'color'
-const defaultSize = 200
+let defaultColor = inputColor.value
+let defaultMode = 'color'
+let defaultSize = 200
 
-const currentColor = defaultColor
-const currentMode = defaultMode
-const currentSize = defaultSize
+let currentColor = defaultColor
+let currentMode = defaultMode
+let currentSize = defaultSize
 
 
 
@@ -30,7 +30,7 @@ const setColors = function(color){
     currentColor = inputColor.value
 }
 
-function eraser(){
+function clearFn(){
     let griddivs = document.querySelectorAll('.grid-box');
     griddivs.forEach(function(div) {
         div.style.backgroundColor = 'white';
@@ -38,8 +38,8 @@ function eraser(){
 }
 
 
-function clear(){
-    alert('aka')
+function eraserFn(){
+    // alert('aka')
     let griddivs = document.querySelectorAll('.grid-box');
     for (let div of griddivs){
         div.addEventListener('mouseenter' , function (){
@@ -49,11 +49,12 @@ function clear(){
 }
 
 color.onclick = () => { currentColor = inputColor.value ;currentMode = 'color'}
-inputColor.onclick = () => (currentColor = inputColor.value)
-RGBColor.onclick = () => (currentMode = 'rainbow')
-eraser.onclick = () => eraser()
-clear.onclick = () => clear()
-range.onchange = 
+inputColor.oninput = () => (currentColor = inputColor.value)
+RGBColor.onclick = () => (currentMode = 'rgb')
+eraser.onclick = () => (currentMode = 'eraser')
+// eraser.onclick = () => {currentMode = 'eraser'; alert(currentMode); eraserFn()}
+clear.onclick = () => clearFn()
+// range.onchange = 
 
 
 
@@ -83,7 +84,7 @@ const createGrid = (amtOfGrids) =>{
     for(let i = 0; i < amtOfGrids; i++){
         const row = document.createElement('div')
         row.classList.add('grid-row')
-
+        
         for(let j = 0; j < amtOfGrids; j++){
             const gridbox = document.createElement('div')
             gridbox.classList.add('grid-box')
@@ -97,8 +98,20 @@ const createGrid = (amtOfGrids) =>{
     }
 }
 const mode = function (e){
+    // alert('griddivs.length')
     if (e.type === 'mouseover' && !mouseup){
-        e.target.style.backgroundColor = color
+        if(currentMode === 'rgb'){
+            // alert(currentColor)
+            let red = Math.floor(Math.random() * 256)
+            let gr = Math.floor(Math.random() * 256)
+            let bl = Math.floor(Math.random() * 256)
+            e.target.style.backgroundColor = `rgb(${red}, ${gr}, ${bl})`
+        }
+        else if(currentMode === 'color')
+            e.target.style.backgroundColor = currentColor
+        else if(currentMode === 'eraser'){
+            e.target.style.backgroundColor = 'white'
+        }
     }
 }
 
