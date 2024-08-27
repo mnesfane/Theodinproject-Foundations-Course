@@ -7,14 +7,18 @@ let inputColor = document.querySelector('.colorInput')
 const RGBColor = document.querySelector('#rbg-color')
 let range = document.querySelector('#range')
 
-let defaultColor = inputColor.value
-let defaultMode = 'color'
-let defaultSize = 200
+const defaultColor = inputColor.value
+const defaultMode = 'color'
+const defaultSize = 200
 
 let currentColor = defaultColor
 let currentMode = defaultMode
 let currentSize = defaultSize
 
+let mouseup = true
+
+document.body.onmousedown = () => (mouseup = false)
+document.body.onmouseup = () => (mouseup = true)
 
 
 
@@ -52,27 +56,13 @@ color.onclick = () => { currentColor = inputColor.value ;currentMode = 'color'}
 inputColor.oninput = () => (currentColor = inputColor.value)
 RGBColor.onclick = () => (currentMode = 'rgb')
 eraser.onclick = () => (currentMode = 'eraser')
-// eraser.onclick = () => {currentMode = 'eraser'; alert(currentMode); eraserFn()}
 clear.onclick = () => clearFn()
-// range.onchange = 
-
-
-
-
-// colorPicker.oninput = (e) => setCurrentColor(e.target.value)
-// colorBtn.onclick = () => setCurrentMode('color')
-// rainbowBtn.onclick = () => setCurrentMode('rainbow')
-// eraserBtn.onclick = () => setCurrentMode('eraser')
-// clearBtn.onclick = () => reloadGrid()
+range.onmousemove = updateRangeSize()
+range.onchange = changeChangeSize()
 // sizeSlider.onmousemove = (e) => updateSizeValue(e.target.value)
 // sizeSlider.onchange = (e) => changeSize(e.target.value)
 
 
-// onclick.color
-let mouseup = true
-
-document.body.onmousedown = () => (mouseup = false)
-document.body.onmouseup = () => (mouseup = true)
 
 
 
