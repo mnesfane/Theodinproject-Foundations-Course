@@ -122,3 +122,11 @@
     height: 50px;
     /* border: 1px solid black; */
 }
+
+.rangeDiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}

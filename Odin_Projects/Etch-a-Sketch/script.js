@@ -15,24 +15,14 @@ let currentColor = defaultColor
 let currentMode = defaultMode
 let currentSize = defaultSize
 
+let rangeSize = 75
+
 let mouseup = true
 
-document.body.onmousedown = () => (mouseup = false)
+// the range slide is fixed cuz of this line 
+// document.body.onmousedown = () => (mouseup = false)
 document.body.onmouseup = () => (mouseup = true)
 
-
-
-const setColors = function(color){
-    // let griddivs = document.querySelectorAll('.grid-box');
-
-    // for (let div of griddivs){
-    //     div.addEventListener('mouseover', function(){
-    //         mode(color)
-    //     })
-    //     div.addEventListener('mouseup', mode
-    // }
-    currentColor = inputColor.value
-}
 
 function clearFn(){
     let griddivs = document.querySelectorAll('.grid-box');
@@ -41,15 +31,11 @@ function clearFn(){
     });
 }
 
-
-function eraserFn(){
-    // alert('aka')
-    let griddivs = document.querySelectorAll('.grid-box');
-    for (let div of griddivs){
-        div.addEventListener('mouseenter' , function (){
-            div.style.backgroundColor = 'white'
-        })
-    }
+const changeRangeSize = function(rangeValue){
+    // alert('dlksm')
+    let rangeSizeText = document.querySelector('.showSizeDiv')
+    rangeSize = rangeValue
+    rangeSizeText.innerHTML = `${rangeSize} x ${rangeSize}` 
 }
 
 color.onclick = () => { currentColor = inputColor.value ;currentMode = 'color'}
@@ -57,20 +43,26 @@ inputColor.oninput = () => (currentColor = inputColor.value)
 RGBColor.onclick = () => (currentMode = 'rgb')
 eraser.onclick = () => (currentMode = 'eraser')
 clear.onclick = () => clearFn()
-range.onmousemove = updateRangeSize()
-range.onchange = changeChangeSize()
-// sizeSlider.onmousemove = (e) => updateSizeValue(e.target.value)
-// sizeSlider.onchange = (e) => changeSize(e.target.value)
+range.onchange = (e) => changeRangeSize(e.target.value)
+range.onmousemove = (e) => changeRangeSize(e.target.value)
 
-
-
-
-
-
+const mode = function (e){
+        if (e.type === 'mouseover' && !mouseup){
+            if(currentMode === 'rgb'){
+                let red = Math.floor(Math.random() * 256)
+                let gr = Math.floor(Math.random() * 256)
+                let bl = Math.floor(Math.random() * 256)
+                e.target.style.backgroundColor = `rgb(${red}, ${gr}, ${bl})`
+            }
+            else if(currentMode === 'color')
+                e.target.style.backgroundColor = currentColor
+            else if(currentMode === 'eraser'){
+                e.target.style.backgroundColor = 'white'}
+    }
+}
 
 const createGrid = (amtOfGrids) =>{
     const widthAndHeight = 480 / amtOfGrids
-    // alert('griddivs.length')
     for(let i = 0; i < amtOfGrids; i++){
         const row = document.createElement('div')
         row.classList.add('grid-row')
@@ -87,28 +79,10 @@ const createGrid = (amtOfGrids) =>{
         container.appendChild(row)
     }
 }
-const mode = function (e){
-    // alert('griddivs.length')
-    if (e.type === 'mouseover' && !mouseup){
-        if(currentMode === 'rgb'){
-            // alert(currentColor)
-            let red = Math.floor(Math.random() * 256)
-            let gr = Math.floor(Math.random() * 256)
-            let bl = Math.floor(Math.random() * 256)
-            e.target.style.backgroundColor = `rgb(${red}, ${gr}, ${bl})`
-        }
-        else if(currentMode === 'color')
-            e.target.style.backgroundColor = currentColor
-        else if(currentMode === 'eraser'){
-            e.target.style.backgroundColor = 'white'
-        }
-    }
-}
-
 
 
 const main = function(){
-    createGrid(200)
+    createGrid(16)
 }
 
 main()
