@@ -21,6 +21,8 @@ let mouseup = true
 
 // the range slide is fixed cuz of this line 
 // document.body.onmousedown = () => (mouseup = false)
+//  if i change it to addEventListener it solves the prob
+document.body.addEventListener('mousedown', () => (mouseup = false));
 document.body.onmouseup = () => (mouseup = true)
 
 
