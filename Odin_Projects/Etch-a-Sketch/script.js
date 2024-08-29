@@ -6,7 +6,7 @@ const color = document.querySelector('#color')
 let inputColor = document.querySelector('.colorInput')
 const RGBColor = document.querySelector('#rbg-color')
 let range = document.querySelector('#range')
-
+let rangeValue = range.value
 const defaultColor = inputColor.value
 const defaultMode = 'color'
 const defaultSize = 200
@@ -36,11 +36,29 @@ function clearFn(){
     });
 }
 
-const changeRangeSize = function(rangeValue){
-    // alert('dlksm')
+const emtyGrid = function(){
+    let rows = document.querySelectorAll('.grid-row')
+    rows.forEach(row => {
+        row.remove();
+    });
+}
+
+const changeRangeSize = function(newRangeValue){
+    rangeValue = newRangeValue
+
+    emtyGrid()
+    createGrid(rangeValue)
+}
+
+const updateRangeValueHtml = function(newRangeValue){
     let rangeSizeText = document.querySelector('.showSizeDiv')
-    rangeSize = rangeValue
-    rangeSizeText.innerHTML = `${rangeSize} x ${rangeSize}` 
+    rangeValue = newRangeValue
+    
+    if(rangeValue === '150')
+        rangeSizeText.innerHTML = 'Paint Mode'
+    else
+        rangeSizeText.innerHTML = `${rangeValue} x ${rangeValue}`
+
 }
 
 color.onclick = () => { currentColor = inputColor.value ;currentMode = 'color'}
@@ -49,7 +67,7 @@ RGBColor.onclick = () => (currentMode = 'rgb')
 eraser.onclick = () => (currentMode = 'eraser')
 clear.onclick = () => clearFn()
 range.onchange = (e) => changeRangeSize(e.target.value)
-range.onmousemove = (e) => changeRangeSize(e.target.value)
+range.onmousemove = (e) => updateRangeValueHtml(e.target.value)
 
 const mode = function (e){
         if (e.type === 'mouseover' && !mouseup){
@@ -85,9 +103,6 @@ const createGrid = (amtOfGrids) =>{
     }
 }
 
-
-const main = function(){
-    createGrid(16)
+window.onload = function (){
+    createGrid(rangeValue)
 }
-
-main()
