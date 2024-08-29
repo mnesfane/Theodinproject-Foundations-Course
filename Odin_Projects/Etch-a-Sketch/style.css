@@ -128,5 +128,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+}
+button{
+    width: 60px;
+    height: 30px;
+    border-radius: 8px;
+}
+
+.activeButt{
+    background-color: rgb(45, 0, 0);
+    color: white;
 }

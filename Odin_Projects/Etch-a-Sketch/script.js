@@ -7,9 +7,10 @@ let inputColor = document.querySelector('.colorInput')
 const RGBColor = document.querySelector('#rbg-color')
 let range = document.querySelector('#range')
 let rangeValue = range.value
+
 const defaultColor = inputColor.value
 const defaultMode = 'color'
-const defaultSize = 200
+const defaultSize = 150
 
 let currentColor = defaultColor
 let currentMode = defaultMode
@@ -30,6 +31,7 @@ document.body.onmouseup = () => (mouseup = true)
 
 
 function clearFn(){
+    currentMode = 'clear'
     let griddivs = document.querySelectorAll('.grid-box');
     griddivs.forEach(function(div) {
         div.style.backgroundColor = 'white';
@@ -61,13 +63,13 @@ const updateRangeValueHtml = function(newRangeValue){
 
 }
 
-color.onclick = () => { currentColor = inputColor.value ;currentMode = 'color'}
-inputColor.oninput = () => (currentColor = inputColor.value)
-RGBColor.onclick = () => (currentMode = 'rgb')
-eraser.onclick = () => (currentMode = 'eraser')
-clear.onclick = () => clearFn()
-range.onchange = (e) => changeRangeSize(e.target.value)
-range.onmousemove = (e) => updateRangeValueHtml(e.target.value)
+color.onclick = () => {  currentColor = inputColor.value ;currentMode = 'color'; activeButton()}
+inputColor.oninput = () => {currentColor = inputColor.value}
+RGBColor.onclick = () => {currentMode = 'rgb'; activeButton()}
+eraser.onclick = () => { currentMode = 'eraser' ; activeButton()}
+clear.onclick = () => { clearFn() ; activeButton()}
+range.onchange = (e) => {changeRangeSize(e.target.value)}
+range.onmousemove = (e) => { updateRangeValueHtml(e.target.value)}
 
 const mode = function (e){
         if (e.type === 'mouseover' && !mouseup){
@@ -103,6 +105,25 @@ const createGrid = (amtOfGrids) =>{
     }
 }
 
+const activeButton = function(){
+    activeButt = document.querySelector('.activeButt')
+    if(activeButt){
+        activeButt.classList.remove('activeButt')
+    }
+    if(currentMode === 'color'){
+        color.classList.add('activeButt')}
+    else if(currentMode === 'rgb'){
+        RGBColor.classList.add('activeButt')
+    }
+    else if(currentMode === 'eraser'){
+        eraser.classList.add('activeButt')
+    }
+    else if(currentMode === 'clear'){
+        clear.classList.add('activeButt')
+    }
+}
+
 window.onload = function (){
     createGrid(rangeValue)
+    activeButton()
 }
