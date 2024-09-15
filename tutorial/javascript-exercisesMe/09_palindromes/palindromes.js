@@ -1,4 +1,5 @@
 const palindromes = function (str) {
+    str = str.toLowerCase()
     let len = str.length - 1;
     for (let i = 0; i <= len; i++){
         if (str[i] !== str[len]){
