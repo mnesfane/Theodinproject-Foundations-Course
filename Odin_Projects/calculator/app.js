@@ -1,4 +1,7 @@
-// ---------- buttons query
+let  nbrStrFrom = ''
+let nbr = 0
+
+// ---------- buttons query and addEventListener
 const ac = document.querySelector('.function.ac')
 const plusMince = document.querySelector('.function.pm')
 const percentage = document.querySelector('.function.percentage')
@@ -19,6 +22,18 @@ const plus = document.querySelector('.operator.plus')
 const decimal = document.querySelector('.decimal')
 const equal = document.querySelector('.operator.equal')
 
+nine.addEventListener('click', () =>{ nbrStrFrom += '9'; display.textContent = nbrStrFrom }) //;alert(nbrStrFrom)
+eight.addEventListener('click', () =>{ nbrStrFrom += '8'; display.textContent = nbrStrFrom }) //;alert(nbrStrFrom)
+seven.addEventListener('click', () =>{ nbrStrFrom += '7'; display.textContent = nbrStrFrom }) //;alert(nbrStrFrom)
+six.addEventListener('click', () =>{ nbrStrFrom += '6'; display.textContent = nbrStrFrom }) //;alert(nbrStrFrom)
+five.addEventListener('click', () =>{ nbrStrFrom += '5'; display.textContent = nbrStrFrom }) //;alert(nbrStrFrom)
+four.addEventListener('click', () =>{ nbrStrFrom += '4'; display.textContent = nbrStrFrom }) //;alert(nbrStrFrom)
+three.addEventListener('click', () =>{ nbrStrFrom += '3'; display.textContent = nbrStrFrom }) //;alert(nbrStrFrom)
+two.addEventListener('click', () =>{ nbrStrFrom += '2'; display.textContent = nbrStrFrom }) //;alert(nbrStrFrom)
+one.addEventListener('click', () =>{ nbrStrFrom += '1'; display.textContent = nbrStrFrom }) //;alert(nbrStrFrom)
+zero.addEventListener('click', () =>{ nbrStrFrom += '0'; display.textContent = nbrStrFrom }) //;alert(nbrStrFrom)
+decimal.addEventListener('click', () =>{ nbrStrFrom += '.'; display.textContent = nbrStrFrom }) // alert(nbrStrFrom)
+
 // ------------ clock query
 let hour = document.querySelector('.hour')
 let minute = document.querySelector('.minute')
@@ -35,4 +50,6 @@ const updateTime = function (){
 updateTime()
 setInterval(updateTime, 1000)
 
-// -------------- display tiped number
+// -------------- display tipped number
+
+let display = document.querySelector('.display')
