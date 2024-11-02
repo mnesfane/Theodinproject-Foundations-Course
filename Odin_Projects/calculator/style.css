@@ -28,6 +28,10 @@
     height: 9rem;
 }
 
+.time{
+    font-size: large;
+}
+
 .display{
     font-size: 5rem;
     /* font-weight:500; */

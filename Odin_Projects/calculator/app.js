@@ -18,16 +18,21 @@ const mince = document.querySelector('.operator.mince')
 const plus = document.querySelector('.operator.plus')
 const decimal = document.querySelector('.decimal')
 const equal = document.querySelector('.operator.equal')
+
 // ------------ clock query
 let hour = document.querySelector('.hour')
 let minute = document.querySelector('.minute')
-// console.log(nowHr.getHours())
 
 const updateTime = function (){
     let now = new Date();
-    hour.textContent = `${now.getHours()}`
-    minute.textContent = `${now.getMinutes()}`
+
+    // hour.textContent = now.getHours() >= 10 ? `${now.getHours()}` : '0' + `${now.getHours()}`
+    // minute.textContent = now.getMinutes() >= 10 ? `${now.getMinutes()}` : '0' + `${now.getMinutes()}`
+    // or use padStart(2, '0')
+    hour.textContent = now.getHours().toString().padStart(2, '0')
+    minute.textContent = now.getMinutes().toString().padStart(2, '0')
 }
+updateTime()
 setInterval(updateTime, 1000)
 
 // -------------- display tiped number
