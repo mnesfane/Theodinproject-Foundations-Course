@@ -29,11 +29,11 @@
 }
 
 .time{
-    font-size: large;
+    font-size: larger;
 }
 
 .display{
-    font-size: 4rem;
+    font-size: 4.3rem;
     /* font-weight:500; */
     margin-right: 0.5rem;
     text-align: right;
@@ -58,7 +58,13 @@ button.function{
 button.operator{
     background-color: #f1a33c;
 }
-button.nb-0{
+
+.activeOperator{
+    color: #f1a33c;
+    background-color: white;
+}
+
+button.zero{
     width: 8.6rem;
     border-radius: 2rem;
     display: flex;

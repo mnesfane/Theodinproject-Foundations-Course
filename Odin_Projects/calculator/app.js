@@ -1,6 +1,8 @@
+import * as handler from './handler.js'
+
+
 let  nbrStrFrom = ''
 let nbr = 0
-
 const buttons = [
     { element: document.querySelector('.zero'), char: '0' },
     { element: document.querySelector('.one'), char: '1' },
@@ -15,16 +17,21 @@ const buttons = [
     { element: document.querySelector('.decimal'), char: '.' }
 ];
 
-// ---------- buttons query and addEventListener
-const ac = document.querySelector('.function.ac')
-const plusMince = document.querySelector('.function.pm')
-const percentage = document.querySelector('.function.percentage')
-const division = document.querySelector('.operator.division')
-const multiplication = document.querySelector('.operator.multiplication')
-const mince = document.querySelector('.operator.mince')
-const plus = document.querySelector('.operator.plus')
-const decimal = document.querySelector('.decimal')
-const equal = document.querySelector('.operator.equal')
+
+const operators = [
+    { element: document.querySelector('.operator.division'), handler: handler.handleDivision },
+    { element: document.querySelector('.operator.multiplication'), handler: handler.handleMultiplication },
+    { element: document.querySelector('.operator.mince'), handler: handler.handleMince },
+    { element: document.querySelector('.operator.plus'), handler: handler.handlePlus },
+    { element: document.querySelector('.operator.equal'), handler: handler.handleEqual }
+]
+// alert('off 1')
+
+const calcFunctions = [
+    { element: document.querySelector('.function.ac'), handler: handler.handleAC },
+    { element: document.querySelector('.function.pm'), handler: handler.handlePlusMinus },
+    { element: document.querySelector('.function.percentage'), handler: handler.handlePercentage }
+]
 
 
 
@@ -48,11 +55,42 @@ setInterval(updateTime, 1000)
 let display = document.querySelector('.display')
 
 const displayChar = function(char){
-    nbrStrFrom = nbrStrFrom.length < 9 && !nbrStrFrom.includes('.') ? nbrStrFrom + char : nbrStrFrom
+    if( char !== '.' || !nbrStrFrom.includes('.'))
+        nbrStrFrom = nbrStrFrom.length < 9 ? nbrStrFrom + char : nbrStrFrom
     display.textContent = nbrStrFrom
+}
+const updateNbr = function(){
+    nbr = Number(nbrStrFrom)
+    // alert(nbr)
 }
 
 buttons.forEach(button => {
-    button.addEventListener('click', () => {displayChar(button.char)})
-    alert('22')
+    button.element.addEventListener('click', () => {
+        displayChar(button.char);
+        updateNbr()
+    })
 })
+
+const removeActiveIfExists = function(element){
+    const activeOp = document.querySelectorAll('.activeOperator')
+    // REMOVE active buttons if exists
+    activeOp.forEach(elem =>{
+        elem.classList.remove('activeOperator');   
+        elem.classList.add('operator');
+    })
+}
+
+const changeButtonColor = function(element){
+    element.classList.remove('operator');
+    element.classList.add('activeOperator');
+}
+
+operators.forEach(op => {
+    op.element.addEventListener('click', () =>{
+        // i placed it exactly here cuz 1: to remove active butt if i pressed another and 2: if i pressed equal need to rem active butt too
+        removeActiveIfExists()
+        if(op.handler !==  handler.handleEqual)
+            changeButtonColor(op.element)
+    })
+})
+alert('1');
