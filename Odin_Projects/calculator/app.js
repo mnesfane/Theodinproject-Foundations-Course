@@ -2,6 +2,8 @@ import * as utils from './utils.js'
 
 let nbrStrFrom = ''
 let nbr = 0
+let nbrSecOp = 0
+// let result = 0
 
 
 const buttons = [
@@ -49,7 +51,16 @@ function handleMince() {
 };
 
 function handlePlus() {
-    // logic for plus
+    // alert(nbrStrFrom)
+    nbrStrFrom = '0'
+    updateNbr(nbrSecOp)
+    displayNbrStr()
+    // operators[3].element.onclick(()=>{
+    //     if(operators[3].element.classList.contains('activeOperator') ){
+    //         alert('active')
+    //     }
+    // })
+
 };
 
 function handleEqual() {
@@ -62,21 +73,25 @@ function handleAC(func) {
     utils.removeActiveIfExists()
     if(nbr !== 0){
         nbr = 0
-        nbTostr()
+        nbTostr(nbr)
         // alert(nbrStrFrom)
         display.textContent = nbrStrFrom
         calcFunctions[0].element.textContent = "AC"
     }
 };
-
+function displayNbrStr(){
+    display.textContent = nbrStrFrom
+}
 function handlePlusMinus() {
     nbr *= -1
-    alert(nbr)
-    nbTostr()
+    nbTostr(nbr)
+    displayNbrStr()
 };
 
 function handlePercentage() {
-    // logic for equal
+    nbr /= 100
+    nbTostr(nbr)
+    displayNbrStr()
 };
 
 // ------------ clock query
@@ -97,32 +112,38 @@ setInterval(updateTime, 1000)
 // -------------- display tipped number
 let display = document.querySelector('.display')
 
-const displayNbrStr = function(char){
-    if( char !== '.' || !nbrStrFrom.includes('.'))
+const displayPressedNumb = function(char){
+    if( char !== '.' || !nbrStrFrom.includes('.')){
         // after i press c(clear) nbrStr == '0' if i press a numb it becames '09' so i need to slice the first 0 
         if(nbrStrFrom[0] === '0'){
             nbrStrFrom = nbrStrFrom.slice(1)    }
         nbrStrFrom = nbrStrFrom.length < 9 ? nbrStrFrom + char : nbrStrFrom
+     }
     display.textContent = nbrStrFrom
 }
 
 const AcToC = function(){
     if(nbr !== 0){
-    calcFunctions[0].element.textContent = "C"}
+        calcFunctions[0].element.textContent = "C"}
 }
 
-function nbTostr(){
-    nbrStrFrom = nbr.toString()
+function nbTostr(nbrParam){
+    // alert(nbrParam)
+    if(nbrParam.toString().length > 9)
+        nbrParam = Number(nbrParam.toString().slice(0, 9))
+    nbrStrFrom = nbrParam.toString()
 }
-const updateNbr = function(){
+const updateNbr = function(nbrParam){
+    // alert(nbrStrFrom)
     nbr = Number(nbrStrFrom)
+    // if the displayed number != 0 Change Ac to C textContent
     AcToC() 
 }
 
 buttons.forEach(button => {
     button.element.addEventListener('click', () => {
-        displayNbrStr(button.char);
-        updateNbr()
+        displayPressedNumb(button.char);
+        updateNbr(nbr)
     })
 })
 
@@ -133,10 +154,20 @@ const changeButtonColor = function(element){
 // operators loop and ev list
 operators.forEach(op => {
     op.element.addEventListener('click', () =>{
-        // i placed it exactly here cuz 1: to remove active butt if i pressed another and 2: if i pressed equal need to rem active butt too
+        // if it's active and i pressed func that calculate nbr, nbrSecop return it to nbr op(-, + ...)
+        op.element.classList.contains('')
+        if(op.element.classList.contains('activeOperator')){
+            nbr = nbr + nbrSecOp
+            nbTostr(nbr)
+            alert(nbr)
+            alert(nbrSecOp)
+        }
+        // i placed it exactly here cuz 1: to remove active butt if i pressed another and 2: if i pressed equal need to rem active butt too{
         utils.removeActiveIfExists()
-        if(op.handler !== handleEqual)
+        if(op.handler !== handleEqual){
             changeButtonColor(op.element)
+            op.handler()
+        }
     })
 })
 
