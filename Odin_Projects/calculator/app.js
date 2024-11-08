@@ -2,7 +2,7 @@ import * as utils from './utils.js'
 
 let nbrStrFrom = ''
 let nbr = 0
-let previousNbr = 0
+let nbrSecOp = 0
 // let result = 0
 
 
@@ -71,7 +71,8 @@ function handleEqual() {
 
 function handleAC(func) {
     utils.removeActiveIfExists()
-    if(nbr !== 0){
+    if(nbrStrFrom !== '0'){
+        alert(nbrStrFrom)
         nbr = 0
         nbTostr(nbr)
         displayNbrStr()
@@ -134,16 +135,22 @@ function nbTostr(nbrParam){
 }
 
 const updateNbr = function(){
+    let nbrParam
     // alert(nbrStrFrom)
-    nbr = Number(nbrStrFrom)
+    nbrParam = Number(nbrStrFrom)
     // if the displayed number != 0 Change Ac to C textContent
     AcToC()
+    return nbrParam
 }
 
 buttons.forEach(button => {
     button.element.addEventListener('click', () => {
         displayPressedNumb(button.char);
-        updateNbr()
+        // classList.contains('activeOperator') if active update nbrSecOp
+        if(activeOp() === undefined)
+            nbr = updateNbr()
+        else
+            nbrSecOp = updateNbr()
     })
 })
 
@@ -151,26 +158,31 @@ const changeButtonColor = function(element){
     element.classList.remove('operator');
     element.classList.add('activeOperator');
 }
+function activeOp(){
+    return operators.find((op)=>{
+        if(op.element.classList.contains('activeOperator'))
+                return op
+    })
+}
 // operators loop and ev list
 operators.forEach(op => {
     op.element.addEventListener('click', () =>{
         if(op.handler !== handleEqual && !op.element.classList.contains('activeOperator')){
             alert('f off' + nbr)
             changeButtonColor(op.element)
-            // 
-            previousNbr = nbr
             nbrStrFrom = '0'
-            updateNbr()
+            nbrSecOp = updateNbr()
             displayNbrStr()
+            alert('f off' + nbrSecOp)
         }
         else if(op.element.classList.contains('activeOperator')){
             // if it's active and i pressed func another time
-            nbr = nbr + previousNbr
+            nbr = nbr + nbrSecOp
             // display new value
             nbTostr(nbr)
             displayNbrStr()
             // store it in prevnbr
-            previousNbr = nbr
+            nbrSecOp = nbr
             // initialize nbr = 0 to take new input nub 
             nbr = 0
             // update nbrStrForm
@@ -178,6 +190,7 @@ operators.forEach(op => {
         //     alert(nbrSecOp)
         }
         // i placed it exactly here cuz 1: to remove active butt if i pressed another and 2: if i pressed equal need to rem active butt too{
+        // maybe pass the op to removeActiveIfExists and skip it by a if (do not remove active)
         // utils.removeActiveIfExists()
     })
 })
