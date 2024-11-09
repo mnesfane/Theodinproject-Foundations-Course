@@ -22,11 +22,11 @@ const buttons = [
 
 
 const operators = [
-    { element: document.querySelector('.operator.division'), handler: handleDivision },
-    { element: document.querySelector('.operator.multiplication'), handler: handleMultiplication },
-    { element: document.querySelector('.operator.mince'), handler: handleMince },
-    { element: document.querySelector('.operator.plus'), handler: handlePlus },
-    { element: document.querySelector('.operator.equal'), handler: handleEqual }
+    { element: document.querySelector('.operator.division'), handler: handleDivision , operation: '/'},
+    { element: document.querySelector('.operator.multiplication'), handler: handleMultiplication , operation: '*'},
+    { element: document.querySelector('.operator.mince'), handler: handleMince , operation: '-'},
+    { element: document.querySelector('.operator.plus'), handler: handlePlus , operation: '+'},
+    { element: document.querySelector('.operator.equal'), handler: handleEqual}
 ]
 
 const calcFunctions = [
@@ -71,9 +71,8 @@ function handleEqual() {
 
 function handleAC(func) {
     utils.removeActiveIfExists()
-    if(nbrStrFrom !== '0'){
-        alert(nbrStrFrom)
-        nbr = 0
+    if(nbr !== 0){
+        nbr = nbrSecOp = 0
         nbTostr(nbr)
         displayNbrStr()
         calcFunctions[0].element.textContent = "AC"
@@ -164,30 +163,65 @@ function activeOp(){
                 return op
     })
 }
+const calcOperation = function(operator){
+    // check if nbr and nbrsecOP are numbers
+    alert(operator)
+    if (operator === '+')
+        nbr += nbrSecOp
+    else if(operator === '-')
+        nbr -= nbrSecOp
+    else if(operator === '*')
+        nbr *= nbrSecOp
+    else if(operator === '/'){
+        if(nbrSecOp === 0){
+            display.textConent = 'Error'
+            nbr = 0
+        }
+        else{
+            nbr = nbr / nbrSecOp
+            // alert(nbr)
+        }
+    }
+}
 // operators loop and ev list
 operators.forEach(op => {
     op.element.addEventListener('click', () =>{
-        if(op.handler !== handleEqual && !op.element.classList.contains('activeOperator')){
-            alert('f off' + nbr)
+        if (op.handler === handleEqual){
+            const activeOp = document.querySelector('.activeOperator')
+            // alert(activeOp.textContent)
+            const lastOperator =  operators.find(oper =>{
+                if(activeOp.textContent === oper.operation)
+                    return oper
+            })
+            alert(lastOperator.operation)
+            calcOperation(lastOperator.operation)
+            nbTostr(nbr)
+            displayNbrStr()
+            utils.removeActiveIfExists()
+            nbrStrFrom = '0'
+        }
+        else if(op.handler !== handleEqual && !op.element.classList.contains('activeOperator')){
+            // alert('f off' + nbr)
+            utils.removeActiveIfExists()
             changeButtonColor(op.element)
             nbrStrFrom = '0'
             nbrSecOp = updateNbr()
             displayNbrStr()
-            alert('f off' + nbrSecOp)
+            // alert('f off' + nbrSecOp)
         }
         else if(op.element.classList.contains('activeOperator')){
             // if it's active and i pressed func another time
-            nbr = nbr + nbrSecOp
+            // nbr = nbr + nbrSecOp
+            calcOperation(op.operation)
+            // nbr = nbr op.operation nbrSecOp
             // display new value
             nbTostr(nbr)
             displayNbrStr()
-            // store it in prevnbr
-            nbrSecOp = nbr
-            // initialize nbr = 0 to take new input nub 
-            nbr = 0
+            // initialize nbrSecOp = 0 to take new input nub 
+            nbrSecOp = 0
             // update nbrStrForm
-            nbTostr(nbr)
-        //     alert(nbrSecOp)
+            nbTostr(nbrSecOp)
+            //     alert(nbrSecOp)
         }
         // i placed it exactly here cuz 1: to remove active butt if i pressed another and 2: if i pressed equal need to rem active butt too{
         // maybe pass the op to removeActiveIfExists and skip it by a if (do not remove active)
