@@ -22,11 +22,11 @@ const buttons = [
 
 
 const operators = [
-    { element: document.querySelector('.operator.division'), handler: handleDivision , operation: '/'},
-    { element: document.querySelector('.operator.multiplication'), handler: handleMultiplication , operation: '*'},
-    { element: document.querySelector('.operator.mince'), handler: handleMince , operation: '-'},
+    { element: document.querySelector('.operator.division'), handler: handleDivision , operation: '÷'},
+    { element: document.querySelector('.operator.multiplication'), handler: handleMultiplication , operation: '×'},
+    { element: document.querySelector('.operator.mince'), handler: handleMince , operation: '−'},
     { element: document.querySelector('.operator.plus'), handler: handlePlus , operation: '+'},
-    { element: document.querySelector('.operator.equal'), handler: handleEqual}
+    { element: document.querySelector('.operator.equal'), handler: handleEqual, operation: '='}
 ]
 
 const calcFunctions = [
@@ -165,43 +165,49 @@ function activeOp(){
 }
 const calcOperation = function(operator){
     // check if nbr and nbrsecOP are numbers
-    alert(operator)
+    // alert(operator)
     if (operator === '+')
         nbr += nbrSecOp
-    else if(operator === '-')
+    else if(operator === '−')
         nbr -= nbrSecOp
-    else if(operator === '*')
+    else if(operator === '×')
         nbr *= nbrSecOp
-    else if(operator === '/'){
+    else if(operator === '÷'){
         if(nbrSecOp === 0){
-            display.textConent = 'Error'
+            // alert('display' + display.textContent)
+            // display.textContent = 'Error'
+            display.textContent = 'Error';
+            //  why display error isn't working
+            // alert('display' + display.textContent)
             nbr = 0
         }
-        else{
+        else
             nbr = nbr / nbrSecOp
-            // alert(nbr)
-        }
     }
 }
 // operators loop and ev list
 operators.forEach(op => {
     op.element.addEventListener('click', () =>{
-        if (op.handler === handleEqual){
-            const activeOp = document.querySelector('.activeOperator')
-            // alert(activeOp.textContent)
-            const lastOperator =  operators.find(oper =>{
-                if(activeOp.textContent === oper.operation)
-                    return oper
+        if (op.operation === '='){
+            let activeOp = document.querySelector('.activeOperator')
+            // if(document.querySelector('.activeOperator')){
+                //     activeOp = document.querySelector('.activeOperator')
+                // }
+                // alert(activeOp.textContent)
+            const lastOperator =  operators.find(oper => {
+                return activeOp.textContent === oper.operation
             })
-            alert(lastOperator.operation)
+            alert(lastOperator)
+            alert('tal hna')
             calcOperation(lastOperator.operation)
             nbTostr(nbr)
             displayNbrStr()
-            utils.removeActiveIfExists()
+            // maybe this ??
             nbrStrFrom = '0'
+            utils.removeActiveIfExists()
         }
-        else if(op.handler !== handleEqual && !op.element.classList.contains('activeOperator')){
-            // alert('f off' + nbr)
+        else if(op.handler !== '=' && !op.element.classList.contains('activeOperator')){
+            alert('f off' + nbr)
             utils.removeActiveIfExists()
             changeButtonColor(op.element)
             nbrStrFrom = '0'
@@ -210,6 +216,7 @@ operators.forEach(op => {
             // alert('f off' + nbrSecOp)
         }
         else if(op.element.classList.contains('activeOperator')){
+            alert('f off' + nbr)
             // if it's active and i pressed func another time
             // nbr = nbr + nbrSecOp
             calcOperation(op.operation)
